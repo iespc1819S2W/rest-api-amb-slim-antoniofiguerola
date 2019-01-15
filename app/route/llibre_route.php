@@ -65,5 +65,31 @@ $app->group('/llibre/', function () {
             )
         ); 
     });
+
+    $this->post('autor/{idAut}/{idLlib}', function ($req, $res, $args) {
+        $atributs=$req->getParsedBody();  //llista atributs del client
+        $obj = new Llibre();
+        return $res
+           ->withHeader('Content-type', 'application/json')
+           ->getBody()
+           ->write(
+            json_encode(
+                $obj->autorLlibre($args["idAut"], $args["idLlib"])
+            )
+        );             
+    });
+
+    $this->delete('autor/{idAut}/{idLlib}', function ($req, $res, $args) {
+        $atributs=$req->getParsedBody();  //llista atributs del client
+        $obj = new Llibre();
+        return $res
+           ->withHeader('Content-type', 'application/json')
+           ->getBody()
+           ->write(
+            json_encode(
+                $obj->baixaAutorLlibre($args["idAut"], $args["idLlib"])
+            )
+        );             
+    });
         
 });

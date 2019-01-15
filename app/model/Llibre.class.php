@@ -79,7 +79,7 @@ class Llibre
         }
     }
 
-    public function baixaAutorLlibre($id_llibre, $id_autor)
+    public function baixaAutorLlibre($id_autor, $id_llibre)
     {
         try {
             $sql = "DELETE FROM lli_aut WHERE FK_IDLLIB = :fk_llibre AND FK_IDAUT = :fk_idaut";
