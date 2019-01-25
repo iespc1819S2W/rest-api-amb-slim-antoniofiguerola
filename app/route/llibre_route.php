@@ -66,7 +66,7 @@ $app->group('/llibre/', function () {
         ); 
     });
 
-    $this->post('autor/{idAut}/{idLlib}', function ($req, $res, $args) {
+    $this->post('{idLlib}/autors/{idAut}', function ($req, $res, $args) {
         $atributs=$req->getParsedBody();  //llista atributs del client
         $obj = new Llibre();
         return $res
@@ -79,7 +79,7 @@ $app->group('/llibre/', function () {
         );             
     });
 
-    $this->delete('autor/{idAut}/{idLlib}', function ($req, $res, $args) {
+    $this->delete('{idLlib}/autors/{idAut}', function ($req, $res, $args) {
         $atributs=$req->getParsedBody();  //llista atributs del client
         $obj = new Llibre();
         return $res
@@ -88,6 +88,19 @@ $app->group('/llibre/', function () {
            ->write(
             json_encode(
                 $obj->baixaAutorLlibre($args["idAut"], $args["idLlib"])
+            )
+        );             
+    });
+
+    $this->get('{idLlib}/autors/', function ($req, $res, $args) {
+        $atributs=$req->getParsedBody();  //llista atributs del client
+        $obj = new Llibre();
+        return $res
+           ->withHeader('Content-type', 'application/json')
+           ->getBody()
+           ->write(
+            json_encode(
+                $obj->llegirAutorsLlibre($args["idLlib"])
             )
         );             
     });

@@ -200,7 +200,7 @@ class Llibre
             // $sql = SELECT FK_IDLLIB, FK_IDAUT, FK_ROLAUT, NOM_AUT 
             //     FROM lli_aut INNER JOIN autors ON lli_aut.fk_idaut = autors.id_aut 
             //     WHERE FK_IDLLIB = 1
-            $sql = "SELECT FK_IDLLIB, FK_IDAUT, FK_ROLAUT, NOM_AUT 
+            $sql = "SELECT FK_IDLLIB, FK_IDAUT, FK_ROLAUT, NOM_AUT, FK_NACIONALITAT 
                     FROM lli_aut INNER JOIN autors ON lli_aut.fk_idaut = autors.id_aut 
                     WHERE FK_IDLLIB = :fk_llibre";
             $stm = $this->conn->prepare($sql);
